@@ -13,7 +13,7 @@ public class Main {
         //Use utility method instead of the complicated Constructor.
         ExecutorService producer = Executors.newSingleThreadExecutor();
 
-        Runnable produce = new Producer(consumer);
+        Runnable produce = new Producer(consumer,"https://www.petitieonline.com/signatures/suntem_impotriva_oug_13_2017_de_modificare_a_cp/");
         producer.submit(produce);
         producer.shutdown();
     }
