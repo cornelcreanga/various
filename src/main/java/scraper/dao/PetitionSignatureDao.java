@@ -141,7 +141,7 @@ public class PetitionSignatureDao {
             stmt.setString(1, valueObject.getName());
             stmt.setString(2, valueObject.getComment());
             stmt.setString(3, valueObject.getCity());
-            stmt.setDate(4, valueObject.getSignDate());
+            stmt.setTimestamp(4, valueObject.getSignDate());
             stmt.setInt(5, valueObject.getPetitionId());
 
             int rowcount = databaseUpdate(conn, stmt);
@@ -208,7 +208,7 @@ public class PetitionSignatureDao {
             stmt.setString(1, valueObject.getName());
             stmt.setString(2, valueObject.getComment());
             stmt.setString(3, valueObject.getCity());
-            stmt.setDate(4, valueObject.getSignDate());
+            stmt.setTimestamp(4, valueObject.getSignDate());
             stmt.setInt(5, valueObject.getPetitionId());
 
             stmt.setInt(6, valueObject.getId());
@@ -438,7 +438,7 @@ public class PetitionSignatureDao {
                 valueObject.setName(result.getString("name"));
                 valueObject.setComment(result.getString("comment"));
                 valueObject.setCity(result.getString("city"));
-                valueObject.setSignDate(result.getDate("signDate"));
+                valueObject.setSignDate(result.getTimestamp("signDate"));
                 valueObject.setPetitionId(result.getInt("petitionId"));
 
             } else {
@@ -477,7 +477,7 @@ public class PetitionSignatureDao {
                 temp.setName(result.getString("name"));
                 temp.setComment(result.getString("comment"));
                 temp.setCity(result.getString("city"));
-                temp.setSignDate(result.getDate("signDate"));
+                temp.setSignDate(result.getTimestamp("signDate"));
                 temp.setPetitionId(result.getInt("petitionId"));
 
                 searchResults.add(temp);

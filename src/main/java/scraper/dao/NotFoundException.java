@@ -1,6 +1,6 @@
 package scraper.dao;
 
-public class NotFoundException extends Exception {
+public class NotFoundException extends RuntimeException {
 
     /**
      * Constructor for NotFoundException. The input message is

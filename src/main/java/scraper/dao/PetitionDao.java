@@ -41,18 +41,6 @@ public class PetitionDao {
     }
 
 
-    /**
-     * load-method. This will load valueObject contents from database using
-     * Primary-Key as identifier. Upper layer should use this so that valueObject
-     * instance is created and only primary-key should be specified. Then call
-     * this method to complete other persistent information. This method will
-     * overwrite all other fields except primary-key and possible runtime variables.
-     * If load can not find matching row, NotFoundException will be thrown.
-     *
-     * @param conn         This method requires working database connection.
-     * @param valueObject  This parameter contains the class instance to be loaded.
-     *                     Primary-key field must be set for this to work properly.
-     */
     public void load(Connection conn, Petition valueObject) throws NotFoundException, SQLException {
 
         String sql = "SELECT * FROM petition WHERE (id = ? ) ";
@@ -67,6 +55,20 @@ public class PetitionDao {
         } finally {
             if (stmt != null)
                 stmt.close();
+        }
+    }
+
+    public Petition loadByName(Connection conn,  String name) throws NotFoundException {
+
+        String sql = "SELECT * FROM petition WHERE (name = ? ) ";
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            Petition p = new Petition();
+            singleQuery(conn, stmt, p);
+            return p;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
     }
 
@@ -90,28 +92,12 @@ public class PetitionDao {
 
 
 
-    /**
-     * create-method. This will create new row in database according to supplied
-     * valueObject contents. Make sure that values for all NOT NULL columns are
-     * correctly specified. Also, if this table does not use automatic surrogate-keys
-     * the primary-key must be specified. After INSERT command this method will
-     * read the generated primary-key back to valueObject if automatic surrogate-keys
-     * were used.
-     *
-     * @param conn         This method requires working database connection.
-     * @param valueObject  This parameter contains the class instance to be created.
-     *                     If automatic surrogate-keys are not used the Primary-key
-     *                     field must be set for this to work properly.
-     */
-    public synchronized void create(Connection conn, Petition valueObject) throws SQLException {
 
-        String sql = "";
-        PreparedStatement stmt = null;
-        ResultSet result = null;
+    public synchronized void create(Connection conn, Petition valueObject){
 
-        try {
-            sql = "INSERT INTO petition ( name, link) VALUES (?, ?) ";
-            stmt = conn.prepareStatement(sql);
+        String sql = "INSERT INTO petition ( name, link) VALUES (?, ?) ";
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, valueObject.getName());
             stmt.setString(2, valueObject.getLink());
@@ -119,12 +105,11 @@ public class PetitionDao {
             int rowcount = databaseUpdate(conn, stmt);
             if (rowcount != 1) {
                 //System.out.println("PrimaryKey Error when updating DB!");
-                throw new SQLException("PrimaryKey Error when updating DB!");
+                throw new SQLRuntimeException("PrimaryKey Error when updating DB!");
             }
 
-        } finally {
-            if (stmt != null)
-                stmt.close();
+        } catch(SQLException e){
+            throw new SQLRuntimeException(e);
         }
 
 
@@ -135,23 +120,16 @@ public class PetitionDao {
          */
         sql = "SELECT last_insert_id()";
 
-        try {
-            stmt = conn.prepareStatement(sql);
-            result = stmt.executeQuery();
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
-
                 valueObject.setId((int)result.getLong(1));
-
             } else {
-                //System.out.println("Unable to find primary-key for created object!");
                 throw new SQLException("Unable to find primary-key for created object!");
             }
-        } finally {
-            if (result != null)
-                result.close();
-            if (stmt != null)
-                stmt.close();
+        } catch(SQLException e){
+            throw new SQLRuntimeException(e);
         }
 
     }

@@ -66,6 +66,20 @@ public class PetitionPageDao {
         }
     }
 
+    public PetitionPage loadByPetitionAndPage(Connection conn,  int petitionId,int petitionPage) throws NotFoundException {
+
+        String sql = "SELECT * FROM petition_page WHERE (petitionId = ? and page=?) ";
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, petitionId);
+            stmt.setInt(2, petitionPage);
+            PetitionPage p = new PetitionPage();
+            singleQuery(conn, stmt, p);
+            return p;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * LoadAll-method. This will read all contents from database table and
