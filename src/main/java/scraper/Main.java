@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         ExecutorService consumer = new ThreadPoolExecutor(8,8,30, TimeUnit.SECONDS,new LinkedBlockingQueue<>(1000000));
 

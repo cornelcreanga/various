@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Consumer implements Runnable {
+    public static final char[] DELIMITERS = new char[]{' ', '-'};
     private final String link;
     private int petitionId;
     private int petitionPage;
@@ -48,10 +49,10 @@ public class Consumer implements Runnable {
             if (found)
                 return;
 
-
+            Document doc = null;
             try {
                 System.out.println("Parsing "+link);
-                Document doc = Jsoup.connect(link).get();
+                doc = Jsoup.connect(link).get();
                 Element signatures = doc.select("table#signatures").first();
                 List<Node> nodes = signatures.childNode(2).childNodes();
                 for (Node node : nodes) {
@@ -63,12 +64,12 @@ public class Consumer implements Runnable {
                         Node name = node.childNode(2);
                         String personName;
                         if (name.childNode(0).childNode(0) instanceof TextNode)
-                            personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim()),new char[]{' ','-'});
+                            personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim()), DELIMITERS);
                         else
-                            personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim()),new char[]{' ','-'});
+                            personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim()), DELIMITERS);
                         Node city = node.childNode(4);
                         String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
-                        cityName = WordUtils.capitalizeFully(removeAccents(cityName),new char[]{' ','-'});
+                        cityName = WordUtils.capitalizeFully(removeAccents(cityName), DELIMITERS);
                         Node comment = node.childNode(6);
                         String personComment = "";
                         if (comment.childNodeSize()>0) {
@@ -81,7 +82,8 @@ public class Consumer implements Runnable {
                 }
 
             } catch (Exception e) {
-                System.out.println("Can't parse the html page");
+                System.out.println("Error occured during parsing, message is "+e.getMessage());
+                System.out.println("Error during parsing link "+link);
                 e.printStackTrace();
                 throw new RuntimeException(e);
             }
@@ -118,13 +120,13 @@ public class Consumer implements Runnable {
                     System.out.println(name);
                     String personName;
                     if (name.childNode(0).childNode(0) instanceof TextNode)
-                        personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim(),new char[]{' ','-'});
+                        personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
                     else
-                        personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(),new char[]{' ','-'});
+                        personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
 
                     Node city = node.childNode(4);
                     String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
-                    cityName = WordUtils.capitalizeFully(removeAccents(cityName),new char[]{' ','-'});
+                    cityName = WordUtils.capitalizeFully(removeAccents(cityName), DELIMITERS);
                     Node comment = node.childNode(6);
                     String personComment = "";
                     if (comment.childNodeSize()>0) {
@@ -162,7 +164,7 @@ public class Consumer implements Runnable {
 //        }
         System.out.println(removeAccents("București"));
         System.out.println("end");
-        System.out.println(WordUtils.capitalizeFully("vincentiu ipate-georgescu",new char[]{' ','-'}));
+        System.out.println(WordUtils.capitalizeFully("vincentiu ipate-georgescu", DELIMITERS));
 
     }
 }

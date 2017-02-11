@@ -52,12 +52,13 @@ public class Producer implements Runnable {
                 c.commit();
             }
         } catch (SQLException e) {
+            System.out.println("Error occured during execution, message is "+e.getMessage());
             throw new SQLRuntimeException(e);
         }
 
 
         for (int i = 0; i < lastPage && (!Thread.currentThread().isInterrupted()); i++) {
-            String page = "https://www.petitieonline.com/signatures/sustinem_guvernul_grindeanu/start/" + i * 10;
+            String page = petitionLink+"start/" + i * 10;
             Runnable consume = new Consumer(page,petition.getId(),i);
             consumer.submit(consume);
         }
