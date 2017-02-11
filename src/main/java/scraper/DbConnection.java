@@ -12,7 +12,7 @@ public class DbConnection {
     static HikariDataSource ds;
     static{
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://172.17.0.2:3306/petitions?useUnicode=true&characterEncoding=UTF-8");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/petitions?useUnicode=true&characterEncoding=UTF-8");
         config.setUsername("root");
         config.setPassword("root");
 

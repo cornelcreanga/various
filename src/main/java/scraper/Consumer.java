@@ -70,13 +70,22 @@ public class Consumer implements Runnable {
                         Node city = node.childNode(4);
                         String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
                         cityName = WordUtils.capitalizeFully(removeAccents(cityName), DELIMITERS);
-                        Node comment = node.childNode(6);
+
                         String personComment = "";
-                        if (comment.childNodeSize()>0) {
-                            personComment = ((TextNode) (comment.childNode(0))).getWholeText().trim();
+                        String signDate = "";
+                        if (node.childNodeSize()==8){
+                            Node date = node.childNode(6);
+                            signDate = ((TextNode)(date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
+                        }else {
+
+                            Node comment = node.childNode(6);
+                            if (comment.childNodeSize() > 0) {
+                                personComment = ((TextNode) (comment.childNode(0))).getWholeText().trim();
+                            }
+                            Node date = node.childNode(8);
+                            signDate = ((TextNode) (date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
                         }
-                        Node date = node.childNode(8);
-                        String signDate = ((TextNode)(date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
+
                         petitionSignatureDao.create(c,new PetitionSignature(personName,personComment,cityName,new Timestamp(sdf.parse(signDate).getTime()),petitionId));
                     }
                 }
@@ -91,6 +100,7 @@ public class Consumer implements Runnable {
             petitionPageDao.create(c,new PetitionPage(petitionId,petitionPage));
             c.commit();
         } catch (SQLException e) {
+            System.out.println("Error occured during execution, message is "+e.getMessage());
             throw new SQLRuntimeException(e);
         }
 
@@ -103,7 +113,8 @@ public class Consumer implements Runnable {
     }
 
     public static void main(String[] args) throws Exception{
-        String link = "https://www.petitieonline.com/signatures/suntem_impotriva_oug_13_2017_de_modificare_a_cp/start/160";
+        //https://www.petitieonline.com/signatures/cetatenii_discriminati_de_presedintele_basescu_ii_cer_demisia/start/141000
+        String link = "https://www.petitieonline.com/signatures/cetatenii_discriminati_de_presedintele_basescu_ii_cer_demisia/start/10";
         try {
             System.out.println("Parsing "+link);
             Document doc = Jsoup.connect(link).get();
@@ -123,17 +134,25 @@ public class Consumer implements Runnable {
                         personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
                     else
                         personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
-
+//8 childs
                     Node city = node.childNode(4);
                     String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
                     cityName = WordUtils.capitalizeFully(removeAccents(cityName), DELIMITERS);
-                    Node comment = node.childNode(6);
-                    String personComment = "";
-                    if (comment.childNodeSize()>0) {
-                        personComment = ((TextNode) (comment.childNode(0))).getWholeText().trim();
+
+                    if (node.childNodeSize()==8){
+                        Node date = node.childNode(6);
+                        String signDate = ((TextNode)(date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
+                        System.out.println(signDate);
+                    }else {
+
+                        Node comment = node.childNode(6);
+                        String personComment = "";
+                        if (comment.childNodeSize() > 0) {
+                            personComment = ((TextNode) (comment.childNode(0))).getWholeText().trim();
+                        }
+                        Node date = node.childNode(8);
+                        String signDate = ((TextNode) (date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
                     }
-                    Node date = node.childNode(8);
-                    String signDate = ((TextNode)(date.childNode(0).childNode(0).childNode(0))).getWholeText().trim();
                 }
             }
 
