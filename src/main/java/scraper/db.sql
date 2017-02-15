@@ -21,6 +21,7 @@ CREATE TABLE `petition_signature` (
   `name` varchar(256) NOT NULL,
   `comment` varchar(16000) DEFAULT NULL,
   `city` varchar(256) DEFAULT NULL,
+  `city_cleaned` varchar(256) DEFAULT NULL,
   `signDate` datetime DEFAULT NULL,
   `petitionId` int(11) NOT NULL,
   PRIMARY KEY (`id`),

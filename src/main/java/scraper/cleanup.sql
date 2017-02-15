@@ -1,4 +1,7 @@
-update petitions.petition_signature set city='Bucuresti' where city in ('Buciresti',
+update petitions.petition_signature set city_cleaned=city where city_cleaned is null;
+
+
+update petitions.petition_signature set city_cleaned='Bucuresti' where city_cleaned in ('Buciresti',
 'Buuresti',
 'Bicuresti',
 'Bucharest, Romania',
@@ -208,9 +211,31 @@ update petitions.petition_signature set city='Bucuresti' where city in ('Bucires
 'Buciurest',
 'Bucjmuresti',
 'Bucruresti',
+'Buicurest',
+'Buicuresti',
+'Bukarest',
+'Bukuresti',
+'Buncresti',
+'Buncuresti',
+'Burcuresti',
+'Bu Curesti',
+'Bu Uresti',
+'Bu Urezti',
+'Bu Urssti',
+'Bu8curesti',
+'Bubcuresti',
+'Bubucresti',
+'Buburesti',
+'Buc',
+'Buc Uresti',
+'Buc.',
+'Buca',
+'Bucarest',
+'Bucaresti',
+'Buccuresti',
 'Bucharest');
 
-update petitions.petition_signature set city='Timisoara' where city in (
+update petitions.petition_signature set city_cleaned='Timisoara' where city_cleaned in (
 'Timisoata',
 'Timisoar',
 'Timisora',
@@ -251,7 +276,6 @@ update petitions.petition_signature set city='Timisoara' where city in (
 'Timisoara, Judetul Timis',
 'Timisoara Romania',
 'Timisoara (romania)',
-'Timisoara',
 'Timisoaea',
 'Timisoaar',
 'Timisoaa',
@@ -283,19 +307,18 @@ update petitions.petition_signature set city='Timisoara' where city in (
 
 );
 
-update petitions.petition_signature set city='Constanta' where city in (
+update petitions.petition_signature set city_cleaned='Constanta' where city_cleaned in (
 'Costanta'
 );
 
-update petitions.petition_signature set city='Baia Mare' where city in (
-'Baiamare'
-);
-
-update petitions.petition_signature set city='Cluj Napoca' where city in (
+update petitions.petition_signature set city_cleaned='Cluj Napoca' where city_cleaned in (
 'Clujnapoca','Cluj_napoca','Cluj -Napoca','Cluj-N','Cluj - Napoca','Cluj  Napoca','Cluj- Napoca','Cluj','Cluj-Napoca','`cluj-Napoca',
 'Clu Napoca',
 'Clu-Napoca',
 'Club N',
+'Clij',
+'Clij Napoca',
+'Clij-Napoca',
 'Club Napoca',
 'Clui-Napoca',
 'Cluj  - Napoca',
@@ -388,9 +411,13 @@ update petitions.petition_signature set city='Cluj Napoca' where city in (
 'Cum Napoca'
 );
 
-update petitions.petition_signature set city='Targu Mures' where city in (
+update petitions.petition_signature set city_cleaned='Targu Mures' where city_cleaned in (
 'Tgmures','Tg.-Mures','Tg. Mures','Tg-Mures','Targu-Mures','Tg.mures','Tg Mures','Tirgu-Mures','Tirgu Mures','Tragu-Mures','Tragu Mures','Tg Murs',
-'Tg Murex',
+'Tg Murex','Tg  Mures',
+'Tg - Mures',
+'Tg .mures',
+'Tg Mutes',
+'Tg-Nures',
 'Tg Muress',
 'Tg Mures Jud Mures',
 'Tg Mure',
@@ -418,8 +445,12 @@ update petitions.petition_signature set city='Targu Mures' where city in (
 'Tg. Murea'
 );
 
-update petitions.petition_signature set city='Drobeta Turnu Severin' where city in (
+update petitions.petition_signature set city_cleaned='Drobeta Turnu Severin' where city_cleaned in (
 'Dr.tr Severin',
+'Tr-Severin',
+'Tr. Severin',
+'Tr.-Severin',
+'Trseverin',
 'Tr.severin','Dr.tr. Severin','Drobeta Tr -Severin','Tr Severin','Drobeta Tr. Severin','Dr-Tr-Severin','Turnu Severin','Drobeta-Turnu-Severin','Drobeta Tr.severin','Drobeta Tr Severin','Dr. Tr. Severin','Drobeta-Turnu Severin','Drobeta Turnu-Severin','Dr.tr.severin','Dr Tr Severin',
 'Dr  Tr Severin',
 'Dr -Tr-Severin',
@@ -454,10 +485,19 @@ update petitions.petition_signature set city='Drobeta Turnu Severin' where city 
 'Dr.trseveri',
 'Dr.turnu Severin',
 'Dr.turnu-Severin',
-'Dr.turnu.severin'
+'Dr.turnu.severin',
+'Turn -Severinu',
+'Turnu - Severin',
+'Turnu -Severin',
+'Turnu Sevrin',
+'Turnu Sevsrin',
+'Turnu-Severin',
+'Turnu.severin',
+'Turnul.severin',
+'Turnuseverin'
 );
 
-update petitions.petition_signature set city='Ramnicu Valcea' where city in (
+update petitions.petition_signature set city_cleaned='Ramnicu Valcea' where city_cleaned in (
 'Ramicu-Valcea',
 'Rm.vilcea',
 'Rm.-Valcea',
@@ -468,14 +508,31 @@ update petitions.petition_signature set city='Ramnicu Valcea' where city in (
 'Rm. Valcea',
 'Rm.valcea',
 'Rm. Vilcea',
-'Rimnicu Vilcea'
+'Rimnicu Vilcea',
+'Ramanicu Valcea',
+'Ramicu Valcea',
+'Ramnic Valcea',
+'Ramnicu  Valcea',
+'Ramnicu - Valcea'
+'Ramnicu -Valcea',
+'Ramnicu Valce',
+'Ramnicu Valcea, Jud Valcea',
+'Ramnicu Valceaconimoldovan@',
+'Ramnicu Valces',
+'Ramnicu-Valce',
+'Ramnicu-Valcea',
+'Ramnicul Vilcea',
+'Ramnicuvalcea',
+'Ramniu Valcea',
+'Ranicu Valcea',
+'Rimnicu Valcea',
+'Rimnicu Viilcea'
+
 );
 
-update petitions.petition_signature set city='Targu Jiu' where city in (
-'Tg-Jiu'
-);
 
-update petitions.petition_signature set city='Alba Iulia' where city in (
+
+update petitions.petition_signature set city_cleaned='Alba Iulia' where city_cleaned in (
 'Alba-Iulia',
 'Alba',
 'Alba  Iulia',
@@ -509,7 +566,7 @@ update petitions.petition_signature set city='Alba Iulia' where city in (
 'Aoba Iulia'
 );
 
-update petitions.petition_signature set city='Brasov' where city in (
+update petitions.petition_signature set city_cleaned='Brasov' where city_cleaned in (
 'Bv',
 'Braosv',
 'Braov',
@@ -535,11 +592,11 @@ update petitions.petition_signature set city='Brasov' where city in (
 'Brasvo'
 );
 
-update petitions.petition_signature set city='Zlatna' where city in (
+update petitions.petition_signature set city_cleaned='Zlatna' where city_cleaned in (
 'Zlatna,jud.alba','Zlatna, Jud. Alba','Zlatna Jud. Alba'
 );
 
-update petitions.petition_signature set city='Zarnesti' where city in (
+update petitions.petition_signature set city_cleaned='Zarnesti' where city_cleaned in (
 'Zarnesti\\brasov',
 'Zarnesti/brasov',
 'Zarnesti.brasov',
@@ -554,7 +611,7 @@ update petitions.petition_signature set city='Zarnesti' where city in (
 'Zarnesti'
 );
 
-update petitions.petition_signature set city='Valul Lui Traian' where city in (
+update petitions.petition_signature set city_cleaned='Valul Lui Traian' where city_cleaned in (
 'Valul Lui Traian',
 'Valu Traian Constanta',
 'Valu Traian',
@@ -571,7 +628,7 @@ update petitions.petition_signature set city='Valul Lui Traian' where city in (
 'Valu Lui Taian'
 );
 
-update petitions.petition_signature set city='Victoria' where city in (
+update petitions.petition_signature set city_cleaned='Victoria' where city_cleaned in (
 'Victoria-Bv',
 'Victoria-Brasov',
 'Victoria-- Brasov',
@@ -584,7 +641,35 @@ update petitions.petition_signature set city='Victoria' where city in (
 'Victori Jud Brasov'
 );
 
-update petitions.petition_signature set city='Tirgu Jiu' where city in (
+update petitions.petition_signature set city_cleaned='Targu Jiu' where city_cleaned in (
+'Tg-Jiu',
+'Tg. Jiu',
+'Targ Jiu',
+'Targ-Jiu',
+'Targu  Jiu',
+'Targu - Jiu',
+'Targu -Jiu',
+'Targu Jii',
+'Targu Jiu Strada Eroilor',
+'Targu Jiy',
+'Targu Ju',
+'Targu-Jiu',
+'Targu.jiu',
+'Targu0jiu',
+'Targujiu',
+'Targul Jiu',
+'Tg  Jiu',
+'Tg - Jiu',
+'Tg -Jiu',
+'Tg. - Jiu',
+'Tg.- Jiu',
+'Tg.-Jiu',
+'Tg.jiu',
+'Tg.jyu',
+'Tg/jiu',
+'Tg=jiu',
+'Tgjiu',
+'Tg_jiu',
 'Tg Ju',
 'Tg Jou',
 'Tg Jiy',
@@ -605,7 +690,7 @@ update petitions.petition_signature set city='Tirgu Jiu' where city in (
 );
 
 
-update petitions.petition_signature set city='Balotesti' where city in (
+update petitions.petition_signature set city_cleaned='Balotesti' where city_cleaned in (
 'Balotesti   Ilfov',
 'Balotesti -Ilfov',
 'Balotesti If',
@@ -618,7 +703,7 @@ update petitions.petition_signature set city='Balotesti' where city in (
 'Balotesti/ilfov'
 );
 
-update petitions.petition_signature set city='Baicoi' where city in (
+update petitions.petition_signature set city_cleaned='Baicoi' where city_cleaned in (
 'Baicoi   Prahova',
 'Baicoi  Jud.  Prahova',
 'Baicoi Ph',
@@ -629,15 +714,16 @@ update petitions.petition_signature set city='Baicoi' where city in (
 'Baicoi=prahova'
 );
 
-update petitions.petition_signature set city='Baia Mare' where city in (
+
+update petitions.petition_signature set city_cleaned='Baia Mare' where city_cleaned in (
 'Bai Mare',
+'Baiamare',
 'Baia   Mare',
 'Baia  Mare',
 'Baia -Mare',
 'Baia ;are',
 'Baia Maer',
 'Baia Mara',
-'Baia Mare',
 'Baia Mare          Mm',
 'Baia Mare Maramures',
 'Baia Mare, 430202',
@@ -664,7 +750,7 @@ update petitions.petition_signature set city='Baia Mare' where city in (
 'Baib-Mare'
 );
 
-update petitions.petition_signature set city='Breaza' where city in (
+update petitions.petition_signature set city_cleaned='Breaza' where city_cleaned in (
 'Breaza , Judetul Prahova',
 'Breaza - Prahova',
 'Breaza Ph',
@@ -676,7 +762,7 @@ update petitions.petition_signature set city='Breaza' where city in (
 'Breaza_prahova'
 );
 
-update petitions.petition_signature set city='Brussels' where city in (
+update petitions.petition_signature set city_cleaned='Brussels' where city_cleaned in (
 'Bruselles',
 'Brusels',
 'Brussel',
@@ -691,10 +777,27 @@ update petitions.petition_signature set city='Brussels' where city in (
 'Bruxelles',
 'Bruxelles 5',
 'Bruxelless',
+'Bruxells',
+'Bruselles',
+'Brusels',
+'Brussel',
+'Brusseles',
+'Brusselles',
+'Brussels',
+'Bruxeelles',
+'Bruxel',
+'Bruxeles',
+'Bruxell',
+'Bruxelle',
+'Bruxelled',
+'Bruxelles',
+'Bruxelles 5',
+'Bruxelles/bucuresti',
+'Bruxelless',
 'Bruxells'
 );
 
-update petitions.petition_signature set city='Borsa' where city in (
+update petitions.petition_signature set city_cleaned='Borsa' where city_cleaned in (
 'Borsa',
 'Borsa  Mm',
 'Borsa , Maramures',
@@ -707,7 +810,7 @@ update petitions.petition_signature set city='Borsa' where city in (
 'Borsa...maramures'
 );
 
-update petitions.petition_signature set city='Campulung Moldovenesc' where city in (
+update petitions.petition_signature set city_cleaned='Campulung Moldovenesc' where city_cleaned in (
 'C Lung Mold',
 'C Lung Moldovenesc',
 'C-Lumg Mold',
@@ -745,7 +848,7 @@ update petitions.petition_signature set city='Campulung Moldovenesc' where city 
 'Campulung-Moldovenesc'
 );
 
-update petitions.petition_signature set city='Codlea' where city in (
+update petitions.petition_signature set city_cleaned='Codlea' where city_cleaned in (
 'Codlea , Brasov',
 'Codlea ,brasov',
 'Codlea Brasov',
@@ -759,7 +862,7 @@ update petitions.petition_signature set city='Codlea' where city in (
 'Codleada'
 );
 
-update petitions.petition_signature set city='Constanta' where city in (
+update petitions.petition_signature set city_cleaned='Constanta' where city_cleaned in (
 'Constants',
 'Constantu',
 'Constany',
@@ -804,7 +907,7 @@ update petitions.petition_signature set city='Constanta' where city in (
 'Cponstanta'
 );
 
-update petitions.petition_signature set city='Craiova' where city in (
+update petitions.petition_signature set city_cleaned='Craiova' where city_cleaned in (
 'Craiiova',
 'Craiiva',
 'Craio0va',
@@ -844,10 +947,14 @@ update petitions.petition_signature set city='Craiova' where city in (
 
 
 
-update petitions.petition_signature set city='Curtea De Arges' where city in (
+update petitions.petition_signature set city_cleaned='Curtea De Arges' where city_cleaned in (
 'Currea De Arges',
 'Curte De Arges',
 'Curtea',
+'C De Arges',
+'C. De Arges',
+'C.de Arges',
+'C:de Arges',
 'Curtea  De  Arges',
 'Curtea De A Rges',
 'Curtea De Ages',
@@ -864,7 +971,7 @@ update petitions.petition_signature set city='Curtea De Arges' where city in (
 'Curteade Arges',
 'Cutea De Arges');
 
-update petitions.petition_signature set city='Piatra Neamt' where city in (
+update petitions.petition_signature set city_cleaned='Piatra Neamt' where city_cleaned in (
 'Piatra_neamt',
 'Piatraneamt',
 'Piatraa Neamt',
@@ -896,10 +1003,18 @@ update petitions.petition_signature set city='Piatra Neamt' where city in (
 'Piatra',
 'Piatr Neamt',
 'Piatea Neamt',
-'Piata Neamt'
+'Piata Neamt',
+'P Neamt',
+'P Nt',
+'P- Neamt',
+'P. Neamt',
+'P.n',
+'P.neamt',
+'P;.neamt',
+'Pioatra Neamt'
 );
 
-update petitions.petition_signature set city='Pitesti' where city in (
+update petitions.petition_signature set city_cleaned='Pitesti' where city_cleaned in (
 'Pitsti',
 'Pitssti',
 'Pitseti',
@@ -927,7 +1042,7 @@ update petitions.petition_signature set city='Pitesti' where city in (
 'Piteati'
 );
 
-update petitions.petition_signature set city='Ploiesti' where city in (
+update petitions.petition_signature set city_cleaned='Ploiesti' where city_cleaned in (
 'Plooesti',
 'Ploisti',
 'Ploirsti',
@@ -970,7 +1085,7 @@ update petitions.petition_signature set city='Ploiesti' where city in (
 'Pliesti'
 );
 
-update petitions.petition_signature set city='Phoenix' where city in (
+update petitions.petition_signature set city_cleaned='Phoenix' where city_cleaned in (
 'Phoenx',
 'Phoeniz',
 'Phoenix,arizona',
@@ -984,7 +1099,7 @@ update petitions.petition_signature set city='Phoenix' where city in (
 'Pheonix',
 'Phenix - Arizona');
 
-update petitions.petition_signature set city='Popesti Leordeni' where city in (
+update petitions.petition_signature set city_cleaned='Popesti Leordeni' where city_cleaned in (
 'Popestileordeni',
 'Popesti-Leordenimargaretacarabageac#@@',
 'Popesti-Leordenibucuresti, Sector4',
@@ -1019,7 +1134,7 @@ update petitions.petition_signature set city='Popesti Leordeni' where city in (
 'Pop. Leordeni',
 'Pop Leordeni');
 
-update petitions.petition_signature set city='Roman' where city in (
+update petitions.petition_signature set city_cleaned='Roman' where city_cleaned in (
 'Roman/neamt',
 'Roman-Neamt',
 'Roman-Jud.neamt',
@@ -1035,7 +1150,7 @@ update petitions.petition_signature set city='Roman' where city in (
 'Roman , Neamt',
 'Roman  Neamt');
 
-update petitions.petition_signature set city='Rosiorii De Vede' where city in (
+update petitions.petition_signature set city_cleaned='Rosiorii De Vede' where city_cleaned in (
 'Rosiroi De Vede',
 'Rosiorii-De - Vede',
 'Rosiorii+de Vede',
@@ -1050,14 +1165,14 @@ update petitions.petition_signature set city='Rosiorii De Vede' where city in (
 'Rosiori  De Vede'
 );
 
-update petitions.petition_signature set city='Tarnaveni' where city in (
+update petitions.petition_signature set city_cleaned='Tarnaveni' where city_cleaned in (
 'Tarnavni Ju.mures',
 'Tarnaveni, Mures',
 'Tarnaveni Jud.murea',
 'Tirnaveni/mures',
 'Tirnaveni');
 
-update petitions.petition_signature set city='Turnu Magurele' where city in (
+update petitions.petition_signature set city_cleaned='Turnu Magurele' where city_cleaned in (
 'Turnumagurele',
 'Turnu=magurele',
 'Turnu-Magurele',
@@ -1069,7 +1184,7 @@ update petitions.petition_signature set city='Turnu Magurele' where city in (
 'Turnu Magurele Jud Teleorman',
 'Turnu Maguele');
 
-update petitions.petition_signature set city='Valenii De Munte' where city in (
+update petitions.petition_signature set city_cleaned='Valenii De Munte' where city_cleaned in (
 'Valentin De Munte',
 'Valeniu De Munte',
 'Valeniide Munte',
@@ -1086,7 +1201,7 @@ update petitions.petition_signature set city='Valenii De Munte' where city in (
 'Valeni De Munte,prahova',
 'Valeni De Munte');
 
-update petitions.petition_signature set city='Vatra Dornei' where city in (
+update petitions.petition_signature set city_cleaned='Vatra Dornei' where city_cleaned in (
 'Vatradornei',
 'Vatra-Dornei',
 'Vatra Drornei',
@@ -1099,7 +1214,7 @@ update petitions.petition_signature set city='Vatra Dornei' where city in (
 
 
 
-update petitions.petition_signature set city='Botosani' where city in (
+update petitions.petition_signature set city_cleaned='Botosani' where city_cleaned in (
 'Botoani',
 'Botoasani',
 'Botosabi',
@@ -1122,7 +1237,7 @@ update petitions.petition_signature set city='Botosani' where city in (
 'Bototsani',
 'Botsani');
 
-update petitions.petition_signature set city='Bragadiru' where city in (
+update petitions.petition_signature set city_cleaned='Bragadiru' where city_cleaned in (
 'Bragadiru',
 'Bragadiru - Ilfov',
 'Bragadiru, Ilfov',
@@ -1133,7 +1248,7 @@ update petitions.petition_signature set city='Bragadiru' where city in (
 
 
 
-update petitions.petition_signature set city='Boldesti Scaieni' where city in (
+update petitions.petition_signature set city_cleaned='Boldesti Scaieni' where city_cleaned in (
 'Boldessti-Scaeni',
 'Boldesti  Scaeni',
 'Boldesti Scaeni',
@@ -1149,9 +1264,9 @@ update petitions.petition_signature set city='Boldesti Scaieni' where city in (
 
 
 
-update petitions.petition_signature set city='Munich' where city in ('Munchen','Munichen');
+update petitions.petition_signature set city_cleaned='Munich' where city_cleaned in ('Munchen','Munichen');
 
-update petitions.petition_signature set city='Sebes' where city in (
+update petitions.petition_signature set city_cleaned='Sebes' where city_cleaned in (
 'Sebe',
 'Sebed',
 'Sebee',
@@ -1166,7 +1281,7 @@ update petitions.petition_signature set city='Sebes' where city in (
 'Sebes- Alba',
 'Sebes-Alba');
 
-update petitions.petition_signature set city='Slatina' where city in (
+update petitions.petition_signature set city_cleaned='Slatina' where city_cleaned in (
 'Slatina    Jud.olt',
 'Slatina   Olt',
 'Slatina  Olt',
@@ -1183,7 +1298,7 @@ update petitions.petition_signature set city='Slatina' where city in (
 'Slatina-Olt.',
 'Slatinaa');
 
-update petitions.petition_signature set city='Sibiu' where city in (
+update petitions.petition_signature set city_cleaned='Sibiu' where city_cleaned in (
 'Siubiu',
 'Sivbiu',
 'Siviu',
@@ -1198,7 +1313,7 @@ update petitions.petition_signature set city='Sibiu' where city in (
 'Sibiui',
 'Sibuu');
 
-update petitions.petition_signature set city='Sighetu  Marmatiei' where city in (
+update petitions.petition_signature set city_cleaned='Sighetu  Marmatiei' where city_cleaned in (
 'Sighet Marmatie',
 'Sighet, Mm',
 'Sighetu -Marmatiei',
@@ -1220,7 +1335,7 @@ update petitions.petition_signature set city='Sighetu  Marmatiei' where city in 
 'Sighetul-Marmatiei',
 'Sighetumarmatiei');
 
-update petitions.petition_signature set city='Sebis' where city in (
+update petitions.petition_signature set city_cleaned='Sebis' where city_cleaned in (
 'Sebis Jud. Arad',
 'Sebis Judetul Arad',
 'Sebis, Arad',
@@ -1231,19 +1346,769 @@ update petitions.petition_signature set city='Sebis' where city in (
 
 
 
+update petitions.petition_signature set city_cleaned='Hunedoara' where city_cleaned in (
+'Humedoara',
+'Hundoara',
+'Hunediara',
+'Hunedoaa',
+'Hunedoaea',
+'Hunedoar',
+'Hunedoare',
+'Hunedoars',
+'Hunedoata',
+'Hunedora',
+'Hunefoara',
+'Hunesoara'
+);
+
+
+update petitions.petition_signature set city_cleaned='Knokke Heist' where city_cleaned in (
+'Knokke Heist',
+'Knokke- Heist',
+'Knokke-Heist',
+'Knomke Heist'
+);
+
+update petitions.petition_signature set city_cleaned='Londra' where city_cleaned in (
+'Londa',
+'Londea',
+'London',
+'London, Greater London',
+'Londr',
+'Londra(bacau)',
+'Londra, Londra Mare',
+'Londrla',
+'Londrs',
+'Londta',
+'Lonfon'
+);
+
+
+update petitions.petition_signature set city_cleaned='Lupeni' where city_cleaned in (
+'Lupebi',
+'Lupeni  Hd',
+'Lupeni (hunedoara)',
+'Lupeni -Hd',
+'Lupeni Hd',
+'Lupeni Hunedoara',
+'Lupeni Judetul Hunedoara',
+'Lupeni,hd.',
+'Lupeni-Hunedoara',
+'Lupeni. Hd.',
+'Lupeni/hd',
+'Lupeni/hunedoara',
+'Lupeni;hd'
+);
+
+update petitions.petition_signature set city_cleaned='Miercurea Ciuc' where city_cleaned in (
+'M Ciuc',
+'M-Ciuc',
+'M-Cuc',
+'M.ciuc',
+'Miercurea',
+'Miercurea  Ciuc',
+'Miercurea  Iuc',
+'Miercurea Ciuc',
+'Miercurea Ciuc, Romania',
+'Miercurea Ciuv',
+'Miercurea Cuc',
+'Miercurea-Ciuc',
+'Miercurea-Cuc',
+'Miercurea-\\ciuc',
+'Miercureaciuc'
+);
+
+update petitions.petition_signature set city_cleaned='Mioveni' where city_cleaned in (
+'Mioveni  Arges',
+'Mioveni - Arges',
+'Mioveni Arges',
+'Mioveni, Judetul Arges',
+'Mioveni,arges',
+'Mioveni-Arges',
+'Miovni'
+);
+
+update petitions.petition_signature set city_cleaned='Moinesti' where city_cleaned in (
+'Moines',
+'Moinesti - Bacau',
+'Moinesti Bacau',
+'Moinesti, Bacau',
+'Moinesti, Jud. Bacau',
+'Moinesti,jud. Bacau',
+'Moinesti-Bacau',
+'Moinsti'
+);
+
+update petitions.petition_signature set city_cleaned='Moldova Noua' where city_cleaned in (
+'Moldova  Noua',
+'Moldova -Noua',
+'Moldova Noia',
+'Moldova Nou',
+'Moldova Noua      Cs',
+'Moldova Noua .cs.',
+'Moldova-Noua'
+);
+
+update petitions.petition_signature set city_cleaned='Navodari' where city_cleaned in (
+'Navodai',
+'Navodar',
+'Navodar/constanta',
+'Navodari Constanta',
+'Navodari Jud Constanta',
+'Navodari, Constanta',
+'Navodari/constanta',
+'Navodarii',
+'Navodari[jud. Constanta].',
+'Navodarj'
+);
+
+update petitions.petition_signature set city_cleaned='Odobesti' where city_cleaned in (
+
+'Odobesti   Vrancea',
+'Odobesti - Vrancea',
+'Odobesti / Vrancea',
+'Odobesti Dambovita',
+'Odobesti Vrancea',
+'Odobesti,vn',
+'Odobesti-Vrancea'
+);
+update petitions.petition_signature set city_cleaned='Odorheiu Secuiesc' where city_cleaned in (
+'Odorheiu - Secuiesc',
+'Odorheiu -Secuiesc',
+'Odorheiu Sec.',
+
+'Odorheiu-Secuiesc',
+'Odorheiul Secuiesc'
+);
+update petitions.petition_signature set city_cleaned='Oltenita' where city_cleaned in (
+'Oltemita',
+
+'Oltenita - Calarasi',
+'Oltenita Jud Calarasi',
+'Oltenita Jud. Calarasi',
+'Oltenita, Calarasi',
+'Oltenita, Jud. Calarasi',
+'Oltenita, Jud.calarasi',
+'Oltenita,calarasi'
+);
+update petitions.petition_signature set city_cleaned='Onesti' where city_cleaned in (
+'Onesi',
+'Onesrt',
+'Onest',
+
+'Onesti    Bacau',
+'Onesti -Bacau',
+'Onesti Bacau',
+'Onesti Jud.bacau.',
+'Onesti,  Jud   Bacau',
+'Onesti, Jud. Bacau',
+'Onesti,bacau',
+'Onesti,jud:bacau',
+'Onesti- Bacau',
+'Onesti--Incinta Bl.26-Bd.oituz',
+'Onesti-Bacau',
+'Onesti/ Bacau',
+'Onesti`',
+'Onezti',
+'Onsti'
+);
+update petitions.petition_signature set city_cleaned='Oradea' where city_cleaned in (
+'Orada',
+'Oradae',
+'Oradda',
+'Oraddea',
+'Orade',
+
+'Oradea Str.vladeasa Nr.29 Bloc D15 , Ap.7',
+'Oradea, Bh',
+'Oradea, Bihor',
+'Oradea,str. Dobrestilor Nr.3 Ap.15',
+'Oradeaa',
+'Oradeaago',
+'Oradeaf',
+'Oradeam',
+'Oradeama',
+'Oradeao',
+'Oradeapp',
+'Oradeav',
+'Oradra',
+'Oradrea',
+'Oradsa',
+'Oraea',
+'Orafea',
+'Orasea',
+'Ordea'
+);
+update petitions.petition_signature set city_cleaned='Ovidiu' where city_cleaned in (
+
+'Ovidiu   - Constanta',
+'Ovidiu  -Constanta',
+'Ovidiu -Constanta',
+'Ovidiu Jud Constanta',
+'Ovidiu, Jud. Constanta',
+'Ovidiu- Constanta',
+'Ovidiu-Constanta',
+'Ovidiu-Jud.constanta',
+'Ovidiu/constanta'
+);
+update petitions.petition_signature set city_cleaned='Rodna' where city_cleaned in (
+
+'Rodna Bistrita-Nasaud',
+'Rodna, Bistrita Nasaud',
+'Rodna,bistrita-Nasaud',
+'Rodna-B.n',
+'Rodna-Bisrita'
+);
+update petitions.petition_signature set city_cleaned='Rosu' where city_cleaned in (
+
+'Rosu / Chiajna',
+'Rosu / Chiajna / Ilfov',
+'Rosu / Ilfov',
+'Rosu Chiajna',
+'Rosu, Chiajna',
+'Rosu, Jud. Ilfov',
+'Rosu,chiajna,ilfov',
+'Rosu-Chiajna, Ilfov',
+'Rosu/chiajna',
+'Rosu/chiajna/ilfov'
+);
+update petitions.petition_signature set city_cleaned='Sacele' where city_cleaned in (
+
+'Sacele  Brasov',
+'Sacele - Brasov',
+'Sacele -Brasov',
+'Sacele Brasov',
+'Sacele Jud. Brasov',
+'Sacele Jud.brasov',
+'Sacele, Brasov',
+'Sacele, Jud. Brasov',
+'Sacele,brasov',
+'Sacele-Brasov',
+'Sacele-Bv',
+'Sacele.brasov',
+'Sacele/brasov',
+'Sacele_brasov'
+);
+update petitions.petition_signature set city_cleaned='Sacramento' where city_cleaned in (
+
+'Sacramento Ca',
+'Sacramento California',
+'Sacramento, Ca',
+'Sacramento, California',
+'Sacramento,california',
+'Sacramneto',
+'Sacranento'
+);
+update petitions.petition_signature set city_cleaned='Sannicolau Mare' where city_cleaned in (
+'Sanncicolau Mare',
+'Sannicolau  Mare',
+
+'Sannicolau Mare  Timis',
+'Sannicolau Mare-Timis',
+'Sannicolau- Mare',
+'Sannicolau-Mare',
+'Sannicolaul Mare',
+'Sannicolaul Mare Timis',
+'Sannicolaul- Mare',
+'Sannicolu Mare',
+'Sannicolu-Mare',
+'Sanniolaul Mare'
+);
+update petitions.petition_signature set city_cleaned='Stuttgart' where city_cleaned in (
+'Sturttgarr',
+'Stuttgardt',
+
+'Stuttgart, Deu',
+'Stuttugart'
+);
+update petitions.petition_signature set city_cleaned='Suceava' where city_cleaned in (
+'Sucaeva',
+'Sucava',
+'Suce',
+'Sucea A',
+'Suceaa',
+'Suceaba',
+'Suceaca',
+'Suceav',
+
+'Suceavac',
+'Suceavas',
+'Suceavs',
+'Sucesva',
+'Sucesvs',
+'Suceva',
+'Sucrava'
+);
+update petitions.petition_signature set city_cleaned='Targoviste' where city_cleaned in (
+'Targiviste',
+'Targivuste',
+'Targo',
+'Targoiste',
+'Targoste',
+'Targovidste',
+'Targovidte',
+'Targovise',
+'Targovisrr',
+'Targovist',
+'Tirgiviste',
+'Tirgoviste',
+'Targoviste Dambovita',
+'Targoviste, Dambovita',
+'Targoviste- Dambovita',
+'Targovisteme',
+'Targovister',
+'Targovistr',
+'Targovistte',
+'Targovistw',
+'Targovite',
+'Targovitste',
+'Targovoste',
+'Targovviste',
+'Targuviste'
+);
+update petitions.petition_signature set city_cleaned='Targu Mures' where city_cleaned in (
+'Targ-Mures',
+'Targi-Mures',
+'Targu - Mures',
+'Targu -Mures',
+'Targu M',
+'Targu Mires',
+'Targu Mjres',
+'Targu Mues',
+'Targu Murea',
+'Targu Mured',
+
+'Targu Mures, Judetul Mures',
+'Targu Mures, Mures',
+'Targu Mures/marosvasarhely',
+'Targu Murescrisstine',
+'Targu Murres',
+'Targu Murrs',
+'Targu+mures',
+'Targu-Muire$',
+'Targu-Mured',
+'Targu-Mures Mures',
+'Targu-[mures',
+'Targul Mures',
+'Targumures',
+'Tg_mures',
+'Tirgu Mured',
+'Tirgu- Mures'
+);
+update petitions.petition_signature set city_cleaned='Tomesti' where city_cleaned in (
+
+'Tomesti - Iasi',
+'Tomesti Iasi',
+'Tomesti Jud. Iasi',
+'Tomesti, Iasi',
+'Tomesti, Jud. Iasi',
+'Tomesti,jud Iasi',
+'Tomesti-Iasi'
+);
+update petitions.petition_signature set city_cleaned='Toplita' where city_cleaned in (
+
+'Toplita Harghita',
+'Toplita Hr',
+'Toplita, Harghita',
+'Toplita, Jud. Harghita.',
+'Toplits'
+);
+update petitions.petition_signature set city_cleaned='Madrid' where city_cleaned in (
+'Madid',
+'Madr6',
+'Madrd',
+'Coslada',
+'Coslada, Madrid',
+'Coslada,madrid',
+'Coslada-Madrid',
+'Madrid/constanta',
+'Madridul De Jos',
+'Madriz',
+'Madrod',
+'Madrrid'
+);
+update petitions.petition_signature set city_cleaned='Miercurea Ciuc' where city_cleaned in (
+'M Ciuc',
+'M-Ciuc',
+'M-Cuc',
+'M.ciuc',
+'Miercrea Ciuc',
+'Miercurea',
+'Miercurea  Ciuc',
+'Miercurea  Iuc',
+'Miercurea Ciuc, Romania',
+'Miercurea Ciuv',
+'Miercurea Cuc',
+'Miercurea-Ciuc',
+'Miercurea-Cuc',
+'Miercurea-\\ciuc',
+'Miercureaciuc'
+);
+update petitions.petition_signature set city_cleaned='Braila' where city_cleaned in (
+'Braial',
+'Braiala',
+'Brail',
+
+'Braila-Romania',
+'Braila.',
+'Brailaa',
+'Brails',
+'Brala',
+'Bralia'
+);
+update petitions.petition_signature set city_cleaned='Bumbesti Jiu' where city_cleaned in (
+'Bumbest-Jiu',
+'Bumbesti',
+
+'Bumbesti-Jiu',
+'Bumbesti-Jiu,gorj',
+'Bumbestu-Jiu',
+'Bummesti Jiu',
+'Bumnbesti - Jiu'
+);
+update petitions.petition_signature set city_cleaned='Campia Turzii' where city_cleaned in (
+'Campia  Turzii',
+'Campia -Turzii',
+'Campia Turzi',
+
+'Campia Turzii ,cluj',
+'Campia Turzii, Jud. Cluj',
+'Campia Turzii, Romania',
+'Campia Turzii/cluj',
+'Campia Turzii/jud.cluj',
+'Campia Turzik',
+'Campia Tutzii',
+'Campia Tuzii',
+'Campia- Turzii',
+'Campia-Turzii',
+'Campiaturzii',
+'Cimpia',
+'Cimpia  Turzii',
+'Cimpia  Turziiandronache',
+'Cimpia Turzii',
+'Cimpia-Turzii'
+);
+
+update petitions.petition_signature set city_cleaned='Campulung' where city_cleaned in (
+'Campu Lung',
+'Campu Lung Muscel',
+'Campullung Muscel',
+'Campulug Arges',
+'Campulumg',
+
+'Campulung  Arges',
+'Campulung  Muscel',
+'Campulung - Arges',
+'Campulung - Muscel',
+'Campulung Ag',
+'Campulung Ag.',
+'Campulung Arges',
+'Campulung Mescel'
+'Campulung Musce',
+'Campulung Muscel',
+'Campulung Muscel,jud.arges',
+'Campulung Muscl',
+'Campulung Musel',
+'Campulung Mustcel',
+'Campulung, Arges',
+'Campulung, Jud. Arges',
+'Campulung,arges',
+'Campulung-Arges',
+'Campulung-Argesi',
+'Campulung-Muscel',
+'Campulung-Muscel, Arges',
+'Campulung/arges',
+'Campulungmuscel',
+'Canpulung Muscel',
+'Cimpulung',
+'Cimpulung Arges',
+'Cimpulung Muscel',
+'Cimpulung- Arges',
+'Cimpulung-Arges',
+'Cimpulung/arges',
+'Cimpulungi'
+);
 
 
 
+update petitions.petition_signature set city_cleaned='Resita' where city_cleaned in (
+'Resita C-S',
+'Resita Caras Severin',
+'Resita-Caras-Severin',
+'Resita7',
+'Resitaa',
+'Resitag',
+'Resitaq',
+'Resitta',
+'Resota',
+'Resuta'
+);
+
+update petitions.petition_signature set city_cleaned='Ramnicu Sarat' where city_cleaned in (
+'Ramnic Sarat',
+'Ramnicl Sarat',
+'Ramnicu  Sarat',
+'Ramnicu -Sarat',
+'Ramnicu Sarat Buzau',
+'Ramnicu Sarat, Judetul Buzau',
+'Ramnicu Sarst',
+'Ramnicu-Sarat',
+'Ramnicul Sarat',
+'Rimnicu Sara',
+'Rimnicu Sarat',
+'Rimnicu Sarat/buzau',
+'Rimnicu-Sarat',
+'Rimnicu.sarat',
+'Rimnicu_sarat'
+);
+
+
+update petitions.petition_signature set city_cleaned='Iasi' where city_cleaned in (
+'Iaasi',
+'Ias',
+'Ias9',
+'Iasi (iasi)',
+'Iasi,',
+'Iasi, Iasi',
+'Iasi, Iasi, Romania',
+'Iasi, Romania',
+'Iasi,is',
+'Iasi-',
+'Iasi1',
+'Iasi8',
+'Iasi`',
+'Iasj',
+'Iassi'
+);
 
 
 
+update petitions.petition_signature set city_cleaned='Beclean' where city_cleaned in (
+'Beclea',
+'Becleam',
+'Beclean Bn',
+'Beclean Judet Bistrita-N',
+'Beclean Judet Bistrita-Nr',
+'Beclean Pe Somes',
+'Beclean,bistrita'
+);
+
+update petitions.petition_signature set city_cleaned='Bat Yam' where city_cleaned in (
+'Bat -Yam',
+'Bat-Yam'
+);
+update petitions.petition_signature set city_cleaned='Bascov' where city_cleaned in (
+'Bascov -Arges',
+'Bascov / Arges',
+'Bascov Arges',
+'Bascov, Arges',
+'Bascov,arges',
+'Bascov,jud Arges',
+'Bascov-Arges'
+);
+update petitions.petition_signature set city_cleaned='Bals' where city_cleaned in (
+'Bals  Jud. Olt',
+'Bals - Olt',
+'Bals Olt',
+'Bals, Olt',
+'Bals-Olt'
+);
+update petitions.petition_signature set city_cleaned='Balcesti' where city_cleaned in (
+'Balcesti,  Jud. Valcea',
+'Balcesti, Jud.valcea.',
+'Balcesti, Valcea',
+'Balcesti,valcea',
+'Balcesti-Valcea'
+);
+update petitions.petition_signature set city_cleaned='Bailesti' where city_cleaned in (
+'Bailedti',
+'Bailesti  Dolj',
+'Bailesti, Dolj',
+'Bailesti,dolj',
+'Bailesti,jud Dolj Str Ai Cuza Nr 1 Bloc 5 Sc 1 Ap4',
+'Bailesti-Dolj',
+'Bailesti.dolj'
+);
+update petitions.petition_signature set city_cleaned='Baia de Aries' where city_cleaned in (
+'Baia De Aries',
+'Baia De Aries , Jud. Alba',
+'Baia De Aries Alba',
+'Baia De Aries, Jud. Alba'
+);
+update petitions.petition_signature set city_cleaned='Azuqueca de Henares' where city_cleaned in (
+'Azugueca De Henares',
+'Azuqeca De Henares',
+'Azuqueca De Henares',
+'Azuqueca Henares'
+);
+update petitions.petition_signature set city_cleaned='Atlanta' where city_cleaned in (
+'Atlanda  Ga',
+'Atlanta  Georgia',
+'Atlanta , Georgia 30306',
+'Atlanta ,georgia',
+'Atlanta Ga',
+'Atlanta Georgia',
+'Atlanta, Ga',
+'Atlanta,ga',
+'Atlanta-Ga'
+);
+update petitions.petition_signature set city_cleaned='Atena' where city_cleaned in (
+'Athena',
+'Athens',
+'Athina'
+);
+update petitions.petition_signature set city_cleaned='Arlington Heights' where city_cleaned in (
+'Arlington Heighst, Ilinois',
+'Arlington Heights , Illinois'
+);
+update petitions.petition_signature set city_cleaned='Arganda del Rey' where city_cleaned in (
+'Argabda Del Rey',
+'Argand Del Rey',
+'Arganda',
+'Arganda De Rey',
+'Arganda Del  Rey',
+'Arganda Del Rey'
+);
+update petitions.petition_signature set city_cleaned='Antwerp' where city_cleaned in (
+'Antterpren',
+'Antwerpen',
+'Anverpen',
+'Anvers',
+'Anweiller',
+'Anwerpen'
+);
+update petitions.petition_signature set city_cleaned='Aiud' where city_cleaned in (
+'Aiud Alba',
+'Aiud Jud Alba',
+'Aiud-Alba',
+'Aiud-Ciumbrud',
+'Aiud-Jud. Alba'
+);
 
 
+update petitions.petition_signature set city_cleaned='Corbeanca' where city_cleaned in (
+'Corbeanca , Ilfov',
+'Corbeanca - Ilfov',
+'Corbeanca - Jud Ilfov',
+'Corbeanca Ilfov',
+'Corbeanca, Ilfov'
+);
 
+update petitions.petition_signature set city_cleaned='Cornetu' where city_cleaned in (
+'Cornetu .if',
+'Cornetu Ilfov',
+'Cornetu Jud Ilfov',
+'Cornetu, Ilfov',
+'Cornetu- Ilfov',
+'Cornetu-Ilfov'
+);
+update petitions.petition_signature set city_cleaned='Cristian' where city_cleaned in (
+'Cristian Brasov',
+'Cristian Brsov',
+'Cristian Bv',
+'Cristian, Brasov',
+'Cristian, Judet Brasov'
+);
 
+update petitions.petition_signature set city_cleaned='Targu Ocna' where city_cleaned in (
+'Targu Ocna - Bacau',
+'Targu Ocna,bacau',
+'Targu- Ocna',
+'Targu-Ocna',
+'Tg Ocna',
+'Tg Ocna Bacau',
+'Tg Ocna Jud Bacau',
+'Tg, Ocna',
+'Tg-Ocna',
+'Tg.  Ocna',
+'Tg. Ocna',
+'Tg. Ocna-Bacau',
+'Tg.ocna',
+'Tg/ocna',
+'Tirgu-Ocna',
+'Tgocna'
+);
 
+update petitions.petition_signature set city_cleaned='Targu Frumos' where city_cleaned in (
+'Targu Frumos (iasi)',
+'Targu Frumos - Iasi',
+'Targu Frumos Iasi',
+'Targu-Frumos,iasi,romania',
+'Tg Frumos',
+'Tg Frumos Iasi',
+'Tg, Frumos',
+'Tg-Frumos',
+'Tg. Frumos',
+'Tg. Frumos , Jud.iasi',
+'Tg. Frumos, Iasi',
+'Tg. Frumos, Jud Iasi',
+'Tg.frumos',
+'Tg.frumos Jud. Iasi',
+'Tg.frumos,iasi'
+);
 
+update petitions.petition_signature set city_cleaned='Sangeorz Bai' where city_cleaned in (
+'Singeoez Bai',
+'Singeorz Bai',
+'Singeorz- Bai',
+'Singeorz-Bai',
+'Singeorz/bai',
+'Singeorzan Bai',
+'Singeorzbai',
+'Singeroz-Bai',
+'Sangeorz Bai',
+'Sangeorz-Bai Bistrita',
+'Sangeorz-Bai, Bistrita'
+);
 
+update petitions.petition_signature set city_cleaned='Simleu Silvaniei' where city_cleaned in (
+'Simlei Silvaniei',
+'Simleu',
+'Simleu  Silvaniei',
+'Simleu -Silvaniei',
+'Simleu S',
+'Simleu Silvaiei',
+'Simleu Silvaniri',
+'Simleu-Silv.',
+'Simleu-Silvaniei',
+'Simleul -Silvsniei',
+'Simleul Silvaniei',
+'Simleul-Silvaniei',
+'Simlei Silvaniei',
+'Simleu',
+'Simleu  Silvaniei',
+'Simleu -Silvaniei',
+'Simleu S',
+'Simleu Silvaiei',
+'Simleu Silvaniri',
+'Simleu-Silv.',
+'Simleu-Silvaniei',
+'Simleul -Silvsniei',
+'Simleul Silvaniei',
+'Simleul-Silvaniei'
 
+);
 
+update petitions.petition_signature set city_cleaned='Breaza' where city_cleaned in (
+'Breaza , Judetul Prahova',
+'Breaza - Prahova',
+'Breaza Ph',
+'Breaza Prahova',
+'Breaza, Prahova',
+'Breaza- Prahova',
+'Breaza-Prahova',
+'Breaza/prahova',
+'Breaza_prahova'
+);
 
+update petitions.petition_signature set city_cleaned='Sighisoara' where city_cleaned in (
+'Sighioara',
+'Sighisaora',
+'Sighisiara',
+'Sighisoara',
+'Sighisoarapapilon',
+'Sighisoata',
+'Sighisora',
+'Sighsoara',
+'Sigisoara'
+);
