@@ -3,6 +3,12 @@ update petitions.petition_signature set city_cleaned=city where city_cleaned is 
 
 update petitions.petition_signature set city_cleaned='Bucuresti' where city_cleaned in ('Buciresti',
 'Buuresti',
+'Biucurest',
+'Biucuresti',
+'Bbucuresti',
+'Bcurestiu',
+'Bcurseti',
+'Bcursti',
 'Bicuresti',
 'Bucharest, Romania',
 'Bcuresti',
@@ -568,6 +574,12 @@ update petitions.petition_signature set city_cleaned='Alba Iulia' where city_cle
 
 update petitions.petition_signature set city_cleaned='Brasov' where city_cleaned in (
 'Bv',
+'Breasov',
+'Bravov',
+'Brsov',
+'Brssov',
+'Brtasov',
+'Btasov',
 'Braosv',
 'Braov',
 'Bras0v',
@@ -643,6 +655,7 @@ update petitions.petition_signature set city_cleaned='Victoria' where city_clean
 
 update petitions.petition_signature set city_cleaned='Targu Jiu' where city_cleaned in (
 'Tg-Jiu',
+'Trgu Jiu',
 'Tg. Jiu',
 'Targ Jiu',
 'Targ-Jiu',
@@ -1677,7 +1690,7 @@ update petitions.petition_signature set city_cleaned='Targu Mures' where city_cl
 'Targu Mues',
 'Targu Murea',
 'Targu Mured',
-
+'Trgu Mures',
 'Targu Mures, Judetul Mures',
 'Targu Mures, Mures',
 'Targu Mures/marosvasarhely',
@@ -2112,3 +2125,259 @@ update petitions.petition_signature set city_cleaned='Sighisoara' where city_cle
 'Sighsoara',
 'Sigisoara'
 );
+
+update petitions.petition_signature set city_cleaned='Branesti' where city_cleaned in (
+'Branest, Ilfov',
+'Branesti  Ilfov',
+'Branesti - Ilfov',
+'Branesti Ilfov',
+'Branesti, Ilfov',
+'Branesti,ilfov',
+'Branesti-Ilfov',
+'Branesti/ Ilfov'
+);
+
+update petitions.petition_signature set city_cleaned='Bran' where city_cleaned in (
+'Bran',
+'Bran - Brasov',
+'Bran -Brasov',
+'Bran Brasov',
+'Bran-Brasov'
+);
+update petitions.petition_signature set city_cleaned='Brad' where city_cleaned in (
+'Brad',
+'Brad  Hunedoara',
+'Brad Hd',
+'Brad, Hd',
+'Brad, Hunedoara',
+'Brad,romania',
+'Brad- Hunedoara'
+);
+update petitions.petition_signature set city_cleaned='Borca' where city_cleaned in (
+'Borca',
+'Borca  Jud Neamt',
+'Borca  Neant',
+'Borca Neamt',
+'Borca, Neamt',
+'Borca-Neamt'
+);
+update petitions.petition_signature set city_cleaned='Bologna' where city_cleaned in (
+'Bologna',
+'Bologna,argelato',
+'Bolognia',
+'Bologns',
+'Bolonia'
+);
+update petitions.petition_signature set city_cleaned='Bodesti' where city_cleaned in (
+'Bodesti',
+'Bodesti - Neamt',
+'Bodesti Nt',
+'Bodesti, Neamt',
+'Bodesti-Neamt'
+);
+update petitions.petition_signature set city_cleaned='Blaj' where city_cleaned in (
+'Blaj',
+'Blaj, Alba',
+'Blaj, Alba Iulia',
+'Blaj, Judetul Alba',
+'Blaj- Alba',
+'Blaj-Alba'
+);
+update petitions.petition_signature set city_cleaned='Bistrita' where city_cleaned in (
+'Bistrita , Bistrita Nasaud',
+'Bistrita - Nasaud',
+'Bistrita -Nasaud',
+'Bistrita Nasaud',
+'Bistrita Nasaudletisarmasan',
+'Bistrita _nasaud',
+'Bistrita, Bistrita-Nasaud',
+'Bistrita, Jud Bn',
+'Bistrita- Nasaud',
+'Bistrita- Nasaud, Bistrita',
+'Bistrita-Nasad',
+'Bistrita-Nasaud',
+'Bistrita-Nasud',
+'Bistritae',
+'Bistritame',
+'Bistritaneamtu',
+'Bistritaromica.',
+'Bistritra',
+'Bistrits',
+'Bistrta',
+'Bistruta',
+'Bisttita',
+'Bisrita',
+'Bistirita',
+'Bistita'
+);
+update petitions.petition_signature set city_cleaned='Birmingham' where city_cleaned in (
+'Birmingam',
+'Birmingan',
+'Birminghaam',
+'Birmingham',
+'Birmingham, Al',
+'Birmingham, West Midlands',
+'Birminghan',
+'Birminghsm'
+);
+update petitions.petition_signature set city_cleaned='Bicazu Adelean' where city_cleaned in (
+'Bicazu Adelean',
+'Bicazu Ardelan',
+'Bicazu Ardelean',
+'Bicazu Ardelean , Neamt',
+'Bicazu Ardelean Neamt',
+'Bicazu-Ardelean'
+);
+update petitions.petition_signature set city_cleaned='Berlin' where city_cleaned in (
+'Berin',
+'Berlin -  Bucuresti',
+'Berlin, Be'
+);
+update petitions.petition_signature set city_cleaned='Berceni' where city_cleaned in (
+'Berceni',
+'Berceni - Ilfov',
+'Berceni Ilfov',
+'Berceni Jud. Ilfov',
+'Berceni Judetul. Ilfov',
+'Berceni, Ilfov',
+'Berceni, Jud. Ilfov',
+'Berceni-Ilfov',
+'Berceni/ilfov'
+);
+update petitions.petition_signature set city_cleaned='Beius' where city_cleaned in (
+'Beius - Bihor',
+'Beius, Bihor',
+'Beius- Bihor',
+'Beius-Bihor'
+);
+update petitions.petition_signature set city_cleaned='Barlad' where city_cleaned in (
+'Barlad  Jud Vaslui',
+'Barlad , Vaslui',
+'Barlad(galati)',
+'Barlad, Vs',
+'Barlad,vaslui',
+'Barlaf'
+);
+update petitions.petition_signature set city_cleaned='Baia Sprie' where city_cleaned in (
+'Baia   Sprie',
+'Baia - Sprie',
+'Baia Sorie',
+'Baia Sprie',
+'Baia-Sprie',
+'Baia/sprie'
+);
+update petitions.petition_signature set city_cleaned='Bacau' where city_cleaned in (
+'Bacau (bc)',
+'Bacau, Bacau',
+'Bacau, Judetul Bacau',
+'Bacau- Str. M. Viteazu  4',
+'Bacau2',
+'Bacaui'
+);
+update petitions.petition_signature set city_cleaned='Zurich' where city_cleaned in (
+'Zturich',
+'Zuerich',
+'Zurih',
+'Zuruch'
+);
+
+update petitions.petition_signature set city_cleaned='Vienna' where city_cleaned in (
+'Vielha',
+'Vien',
+'Viena',
+'Vienne',
+'Wie',
+'Wien',
+'Wien 1220',
+'Wien V',
+'Wiena',
+'Wienna'
+);
+
+update petitions.petition_signature set city_cleaned='Turda' where city_cleaned in (
+'Turda Cluj',
+'Turda, Cluj',
+'Turda, Jud. Cluj',
+'Turda,cluj',
+'Turda,jud Cluj',
+'Turda,jud.cluj',
+'Turda- Calarasi',
+'Turda-Cluj',
+'Turdas',
+'Turda`',
+'Turds'
+);
+
+update petitions.petition_signature set city_cleaned='Targu Neamt' where city_cleaned in (
+'Trgu Neamt',
+'Tirgu Neamt',
+'Tirgu Neant',
+'Tirgu-Neamt',
+'Tg . Neamt',
+'Tg Neamt',
+'Tg Nt',
+'Tg-Neamt',
+'Tg.  Neamt',
+'Tg. Neamt',
+'Tg.neamnt',
+'Tg.neamt',
+'Tg.neamt.jud.neamt',
+'Targu-Neamt',
+'Targu.neamt',
+'Targul  Neamt',
+'Targul Neamt'
+);
+
+
+
+
+update petitions.petition_signature set city_cleaned='Vulcan' where city_cleaned in (
+'Vulcan  (hd)',
+'Vulcan  Hd',
+'Vulcan Hd',
+'Vulcan Hd.',
+'Vulcan Hunedoara',
+'Vulcan Jud Hunedoara',
+'Vulcan, Hunedoara',
+'Vulcan,hd',
+'Vulcan-Hd',
+'Vulcan-Hunedoara',
+'Vulcan.hd',
+'Vulcan/hd',
+'Vulcanv'
+);
+update petitions.petition_signature set city_cleaned='Targu Lapus' where city_cleaned in (
+'Targu Lapud',
+'Targu-Lapus',
+'Tg  Lapus',
+'Tg - Lapus',
+'Tg Lapus',
+'Tg Lapus Mm',
+'Tg-Lapus',
+'Tg. Lapus',
+'Tg.lapus',
+'Tg.lapus Mm',
+'Tg.lapus-Mm',
+'Tirgu Lapus',
+'Tirgu- Lapus'
+);
+update petitions.petition_signature set city_cleaned='Targu Jiu' where city_cleaned in (
+'Tirgu - Jiu',
+'Tirgu Jiu',
+'Tirgu- Jiu',
+'Tirgu-Jiu',
+'Tirgujiu',
+'Tirgu~jiu'
+);
+update petitions.petition_signature set city_cleaned='Tautii Magheraus' where city_cleaned in (
+'Tauti Magheraus',
+'Tautii Magheraus Str.5.nr.14',
+'Tautii-Magheraus'
+);
+
+-- http://api.geonames.org/search?q=admus&maxRows=10&username=demo&fuzzy=0.6
+-- http://www.geonames.org/export/geonames-search.html
+
+
+
+
