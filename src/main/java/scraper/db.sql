@@ -28,3 +28,20 @@ CREATE TABLE `petition_signature` (
   KEY `fk_petition_signature_1_idx` (`petitionId`),
   CONSTRAINT `fk_petition_signature_1` FOREIGN KEY (`petitionId`) REFERENCES `petition` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=258867 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `campaigns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `link` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `donations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `campaign_id` int(11) NOT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_donations_1_idx` (`campaign_id`),
+  CONSTRAINT `fk_donations_1` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -22,7 +22,7 @@ import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class Consumer implements Runnable {
+public class ConsumerPetitions implements Runnable {
     public static final char[] DELIMITERS = new char[]{' ', '-'};
     private final String link;
     private int petitionId;
@@ -30,7 +30,7 @@ public class Consumer implements Runnable {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 
-    public Consumer(String link, int petitionId, int petitionPage) {
+    public ConsumerPetitions(String link, int petitionId, int petitionPage) {
         this.link = link;
         this.petitionId = petitionId;
         this.petitionPage = petitionPage;

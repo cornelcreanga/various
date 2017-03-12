@@ -1,6 +1,6 @@
 package scraper.dao;
 
-import scraper.model.Petition;
+import scraper.model.Campaign;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,25 +9,41 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PetitionDao {
+public class CampaignDao {
 
 
-    public Petition createValueObject() {
-        return new Petition();
+
+    /**
+     * createValueObject-method. This method is used when the Dao class needs
+     * to create new value object instance. The reason why this method exists
+     * is that sometimes the programmer may want to extend also the valueObject
+     * and then this method can be overrided to return extended valueObject.
+     * NOTE: If you extend the valueObject class, make sure to override the
+     * clone() method in it!
+     */
+    public Campaign createValueObject() {
+        return new Campaign();
     }
 
-    public Petition getObject(Connection conn, int id) throws NotFoundException, SQLException {
 
-        Petition valueObject = createValueObject();
+    /**
+     * getObject-method. This will create and load valueObject contents from database
+     * using given Primary-Key as identifier. This method is just a convenience method
+     * for the real load-method which accepts the valueObject as a parameter. Returned
+     * valueObject will be created using the createValueObject() method.
+     */
+    public Campaign getObject(Connection conn, int id) throws NotFoundException, SQLException {
+
+        Campaign valueObject = createValueObject();
         valueObject.setId(id);
         load(conn, valueObject);
         return valueObject;
     }
 
 
-    public void load(Connection conn, Petition valueObject) throws NotFoundException, SQLException {
+    public void load(Connection conn, Campaign valueObject) throws NotFoundException, SQLException {
 
-        String sql = "SELECT * FROM petition WHERE (id = ? ) ";
+        String sql = "SELECT * FROM campaign WHERE (id = ? ) ";
         PreparedStatement stmt = null;
 
         try {
@@ -42,13 +58,13 @@ public class PetitionDao {
         }
     }
 
-    public Petition loadByName(Connection conn,  String name) throws NotFoundException {
+    public Campaign loadByName(Connection conn,  String name) throws NotFoundException {
 
-        String sql = "SELECT * FROM petition WHERE (name = ? ) ";
+        String sql = "SELECT * FROM campaign WHERE (name = ? ) ";
 
         try(PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, name);
-            Petition p = new Petition();
+            Campaign p = new Campaign();
             singleQuery(conn, stmt, p);
             return p;
         }catch (SQLException e){
@@ -68,7 +84,7 @@ public class PetitionDao {
      */
     public List loadAll(Connection conn) throws SQLException {
 
-        String sql = "SELECT * FROM petition ORDER BY id ASC ";
+        String sql = "SELECT * FROM campaign ORDER BY id ASC ";
         List searchResults = listQuery(conn, conn.prepareStatement(sql));
 
         return searchResults;
@@ -77,9 +93,9 @@ public class PetitionDao {
 
 
 
-    public synchronized void create(Connection conn, Petition valueObject){
+    public synchronized void create(Connection conn, Campaign valueObject){
 
-        String sql = "INSERT INTO petition ( name, link) VALUES (?, ?) ";
+        String sql = "INSERT INTO campaign ( name, link) VALUES (?, ?) ";
 
         try(PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -119,10 +135,21 @@ public class PetitionDao {
     }
 
 
-    public void save(Connection conn, Petition valueObject)
+    /**
+     * save-method. This method will save the current state of valueObject to database.
+     * Save can not be used to create new instances in database, so upper layer must
+     * make sure that the primary-key is correctly specified. Primary-key will indicate
+     * which instance is going to be updated in database. If save can not find matching
+     * row, NotFoundException will be thrown.
+     *
+     * @param conn         This method requires working database connection.
+     * @param valueObject  This parameter contains the class instance to be saved.
+     *                     Primary-key field must be set for this to work properly.
+     */
+    public void save(Connection conn, Campaign valueObject)
             throws NotFoundException, SQLException {
 
-        String sql = "UPDATE petition SET name = ?, link = ? WHERE (id = ? ) ";
+        String sql = "UPDATE campaign SET name = ?, link = ? WHERE (id = ? ) ";
         PreparedStatement stmt = null;
 
         try {
@@ -148,10 +175,22 @@ public class PetitionDao {
     }
 
 
-    public void delete(Connection conn, Petition valueObject)
+    /**
+     * delete-method. This method will remove the information from database as identified by
+     * by primary-key in supplied valueObject. Once valueObject has been deleted it can not
+     * be restored by calling save. Restoring can only be done using create method but if
+     * database is using automatic surrogate-keys, the resulting object will have different
+     * primary-key than what it was in the deleted object. If delete can not find matching row,
+     * NotFoundException will be thrown.
+     *
+     * @param conn         This method requires working database connection.
+     * @param valueObject  This parameter contains the class instance to be deleted.
+     *                     Primary-key field must be set for this to work properly.
+     */
+    public void delete(Connection conn, Campaign valueObject)
             throws NotFoundException, SQLException {
 
-        String sql = "DELETE FROM petition WHERE (id = ? ) ";
+        String sql = "DELETE FROM campaign WHERE (id = ? ) ";
         PreparedStatement stmt = null;
 
         try {
@@ -174,9 +213,20 @@ public class PetitionDao {
     }
 
 
+    /**
+     * deleteAll-method. This method will remove all information from the table that matches
+     * this Dao and ValueObject couple. This should be the most efficient way to clear table.
+     * Once deleteAll has been called, no valueObject that has been created before can be
+     * restored by calling save. Restoring can only be done using create method but if database
+     * is using automatic surrogate-keys, the resulting object will have different primary-key
+     * than what it was in the deleted object. (Note, the implementation of this method should
+     * be different with different DB backends.)
+     *
+     * @param conn         This method requires working database connection.
+     */
     public void deleteAll(Connection conn) throws SQLException {
 
-        String sql = "DELETE FROM petition";
+        String sql = "DELETE FROM campaign";
         PreparedStatement stmt = null;
 
         try {
@@ -189,9 +239,17 @@ public class PetitionDao {
     }
 
 
+    /**
+     * coutAll-method. This method will return the number of all rows from table that matches
+     * this Dao. The implementation will simply execute "select count(primarykey) from table".
+     * If table is empty, the return value is 0. This method should be used before calling
+     * loadAll, to make sure table has not too many rows.
+     *
+     * @param conn         This method requires working database connection.
+     */
     public int countAll(Connection conn) throws SQLException {
 
-        String sql = "SELECT count(*) FROM petition";
+        String sql = "SELECT count(*) FROM campaign";
         PreparedStatement stmt = null;
         ResultSet result = null;
         int allRows = 0;
@@ -203,6 +261,8 @@ public class PetitionDao {
             if (result.next())
                 allRows = result.getInt(1);
         } finally {
+            if (result != null)
+                result.close();
             if (stmt != null)
                 stmt.close();
         }
@@ -210,12 +270,25 @@ public class PetitionDao {
     }
 
 
-    public List searchMatching(Connection conn, Petition valueObject) throws SQLException {
+    /**
+     * searchMatching-Method. This method provides searching capability to
+     * get matching valueObjects from database. It works by searching all
+     * objects that match permanent instance variables of given object.
+     * Upper layer should use this by setting some parameters in valueObject
+     * and then  call searchMatching. The result will be 0-N objects in a List,
+     * all matching those criteria you specified. Those instance-variables that
+     * have NULL values are excluded in search-criteria.
+     *
+     * @param conn         This method requires working database connection.
+     * @param valueObject  This parameter contains the class instance where search will be based.
+     *                     Primary-key field should not be set.
+     */
+    public List searchMatching(Connection conn, Campaign valueObject) throws SQLException {
 
         List searchResults;
 
         boolean first = true;
-        StringBuffer sql = new StringBuffer("SELECT * FROM petition WHERE 1=1 ");
+        StringBuffer sql = new StringBuffer("SELECT * FROM campaign WHERE 1=1 ");
 
         if (valueObject.getId() != 0) {
             if (first) { first = false; }
@@ -274,7 +347,7 @@ public class PetitionDao {
      * @param stmt         This parameter contains the SQL statement to be excuted.
      * @param valueObject  Class-instance where resulting data will be stored.
      */
-    protected void singleQuery(Connection conn, PreparedStatement stmt, Petition valueObject)
+    protected void singleQuery(Connection conn, PreparedStatement stmt, Campaign valueObject)
             throws NotFoundException, SQLException {
 
         ResultSet result = null;
@@ -289,8 +362,8 @@ public class PetitionDao {
                 valueObject.setLink(result.getString("link"));
 
             } else {
-                //System.out.println("Petition Object Not Found!");
-                throw new NotFoundException("Petition Object Not Found!");
+                //System.out.println("campaign Object Not Found!");
+                throw new NotFoundException("campaign Object Not Found!");
             }
         } finally {
             if (result != null)
@@ -318,7 +391,7 @@ public class PetitionDao {
             result = stmt.executeQuery();
 
             while (result.next()) {
-                Petition temp = createValueObject();
+                Campaign temp = createValueObject();
 
                 temp.setId(result.getInt("id"));
                 temp.setName(result.getString("name"));

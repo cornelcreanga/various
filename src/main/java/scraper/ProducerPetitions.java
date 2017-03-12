@@ -15,21 +15,21 @@ import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class Producer implements Runnable {
+public class ProducerPetitions implements Runnable {
     private final ExecutorService consumer;
-    private String petitionLink;
-    private String petitionName;
+    private String link;
+    private String name;
 
-    public Producer(ExecutorService consumer, String petitionLink, String petitionName) {
+    public ProducerPetitions(ExecutorService consumer, String link, String name) {
         this.consumer = consumer;
-        this.petitionLink = petitionLink;
-        this.petitionName = petitionName;
+        this.link = link;
+        this.name = name;
     }
 
     public void run() {
         int lastPage = 0;
         try {
-            Document doc = Jsoup.connect(petitionLink).get();
+            Document doc = Jsoup.connect(link).get();
             Element pagination = doc.select(".pagination").first();
             Elements childrens = pagination.children();
             TextNode lastPageNode = (TextNode) childrens.get(childrens.size() - 2).childNode(0).childNode(0);
@@ -45,9 +45,9 @@ public class Producer implements Runnable {
         try(Connection c = DbConnection.get()){
 
             try {
-                petition = dao.loadByName(c, petitionName);
+                petition = dao.loadByName(c, name);
             }catch(NotFoundException e){
-                petition = new Petition(petitionName,petitionLink);
+                petition = new Petition(name, link);
                 dao.create(c,petition);
                 c.commit();
             }
@@ -58,8 +58,8 @@ public class Producer implements Runnable {
 
 
         for (int i = 0; i < lastPage && (!Thread.currentThread().isInterrupted()); i++) {
-            String page = petitionLink+"start/" + i * 10;
-            Runnable consume = new Consumer(page,petition.getId(),i);
+            String page = link +"start/" + i * 10;
+            Runnable consume = new ConsumerPetitions(page,petition.getId(),i);
             consumer.submit(consume);
         }
         try {

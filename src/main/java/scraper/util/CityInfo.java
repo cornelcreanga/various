@@ -60,10 +60,12 @@ public class CityInfo {
         public String countyName;
         public String alternate;
         public String region;
+        public int population;
 
-        public CityData(String name, String region) {
+        public CityData(String name, String region,int population) {
             this.countyName = name;
             this.region = region;
+            this.population = population;
         }
     }
 
@@ -72,7 +74,7 @@ public class CityInfo {
         Map<String,CityData> map = new HashMap<>();
 
         try(Statement st = connection.createStatement()){
-            ResultSet rs = st.executeQuery("select asciiname,admin1_code from geoname_all");
+            ResultSet rs = st.executeQuery("select asciiname,admin1_code,population from geoname_all");
             while(rs.next()){
                 String name = rs.getString(1);
                 name = name.replace("-"," ");
@@ -87,6 +89,7 @@ public class CityInfo {
                 code = Integer.parseInt(codeAsString);
                 if (code==0)
                     continue;
+                int population = rs.getInt(3);
                 String countyName = codes.get(code);
                 String region = "";
                 switch (code){
@@ -126,10 +129,17 @@ public class CityInfo {
                     case 41:
                     case 22:region="Muntenia";break;
                     case 10:region="Bucuresti";break;
+                    case 18:
+                    case 28:
+                    case 23:
+                    case 4:
+                    case 38:
+                    case 40:region="Moldova";break;
                     default:
                 }
-
-                map.put(name.toLowerCase(),new CityData(countyName,region));
+                CityData cityData = map.get(name.toLowerCase());
+                if ((cityData==null) || (cityData.population<population))
+                    map.put(name.toLowerCase(),new CityData(countyName,region,population));
             }
         }
 
