@@ -60,8 +60,7 @@ public class DonationDao {
         ResultSet result = null;
 
         try {
-            sql = "INSERT INTO donation ( name, comment, city, "
-                    + "signDate, petitionId) VALUES (?, ?, ?, ?, ?) ";
+            sql = "INSERT INTO donation ( name, amount,campaign_id) VALUES (?, ?, ?) ";
             stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, valueObject.getName());
@@ -112,8 +111,7 @@ public class DonationDao {
     public void save(Connection conn, Donation valueObject)
             throws NotFoundException, SQLException {
 
-        String sql = "UPDATE donation SET name = ?, comment = ?, city = ?, "
-                + "signDate = ?, petitionId = ? WHERE (id = ? ) ";
+        String sql = "UPDATE donation SET name = ?, amount = ?,campaign_id=? WHERE (id = ? ) ";
         PreparedStatement stmt = null;
 
         try {
@@ -195,8 +193,6 @@ public class DonationDao {
             if (result.next())
                 allRows = result.getInt(1);
         } finally {
-            if (result != null)
-                result.close();
             if (stmt != null)
                 stmt.close();
         }
@@ -228,7 +224,7 @@ public class DonationDao {
 
         if (valueObject.getCampaignId() != 0) {
             if (first) { first = false; }
-            sql.append("AND petitionId = ").append(valueObject.getCampaignId()).append(" ");
+            sql.append("AND campaign_id = ").append(valueObject.getCampaignId()).append(" ");
         }
 
 
@@ -266,7 +262,7 @@ public class DonationDao {
                 valueObject.setId(result.getInt("id"));
                 valueObject.setName(result.getString("name"));
                 valueObject.setAmount(result.getInt("amount"));
-                valueObject.setCampaignId(result.getInt("campaignId"));
+                valueObject.setCampaignId(result.getInt("campaign_id"));
 
             } else {
                 //System.out.println("Donation Object Not Found!");
@@ -292,7 +288,7 @@ public class DonationDao {
                 temp.setId(result.getInt("id"));
                 temp.setName(result.getString("name"));
                 temp.setAmount(result.getInt("amount"));
-                temp.setCampaignId(result.getInt("campaignId"));
+                temp.setCampaignId(result.getInt("campaign_id"));
 
                 searchResults.add(temp);
             }
