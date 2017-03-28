@@ -29,7 +29,7 @@ public class ConsumerDonations implements Runnable {
     @Override
     public void run() {
         Document doc = null;
-
+        System.out.println("start");
         CampaignDao campaignDao = new CampaignDao();
         DonationDao donationDao = new DonationDao();
         Campaign campaign;
@@ -37,11 +37,12 @@ public class ConsumerDonations implements Runnable {
 
             try {
                 campaign = campaignDao.loadByName(c, text);
+                System.out.println("campaign "+campaign.getName()+" was already processed");
                 return;
             } catch (NotFoundException e) {
                 campaign = new Campaign(text, link);
                 campaignDao.create(c, campaign);
-                System.out.println("Will process camapign " + link);
+                System.out.println("Will process campaign " + link);
             }
 
 

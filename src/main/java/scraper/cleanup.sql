@@ -686,8 +686,7 @@ update petitions.petition_signature set city_cleaned='Zarnesti' where city_clean
 'Zarnesti Jud Brasov',
 'Zarnesti Brasov',
 'Zarnesti - Brasov',
-'Zarnesti (brasov)',
-'Zarnesti'
+'Zarnesti (brasov)'
 );
 
 update petitions.petition_signature set city_cleaned='Valu Lui Traian' where city_cleaned in (
@@ -715,7 +714,6 @@ update petitions.petition_signature set city_cleaned='Victoria' where city_clean
 'Victoria Jud.brasov',
 'Victoria Brasov',
 'Victoria - Brasov',
-'Victoria',
 'Victori Jud Brasov'
 );
 
@@ -876,7 +874,6 @@ update petitions.petition_signature set city_cleaned='Brussels' where city_clean
 );
 
 update petitions.petition_signature set city_cleaned='Borsa' where city_cleaned in (
-'Borsa',
 'Borsa  Mm',
 'Borsa , Maramures',
 'Borsa Maramures',
@@ -1314,7 +1311,6 @@ update petitions.petition_signature set city_cleaned='Botosani' where city_clean
 'Botsani');
 
 update petitions.petition_signature set city_cleaned='Bragadiru' where city_cleaned in (
-'Bragadiru',
 'Bragadiru - Ilfov',
 'Bragadiru, Ilfov',
 'Bragadiru-If',
@@ -1485,7 +1481,6 @@ update petitions.petition_signature set city_cleaned='Miercurea Ciuc' where city
 'Miercurea',
 'Miercurea  Ciuc',
 'Miercurea  Iuc',
-'Miercurea Ciuc',
 'Miercurea Ciuc, Romania',
 'Miercurea Ciuv',
 'Miercurea Cuc',
@@ -2140,7 +2135,6 @@ update petitions.petition_signature set city_cleaned='Sangeorz Bai' where city_c
 'Singeorzan Bai',
 'Singeorzbai',
 'Singeroz-Bai',
-'Sangeorz Bai',
 'Sangeorz-Bai Bistrita',
 'Sangeorz-Bai, Bistrita'
 );
@@ -2215,7 +2209,6 @@ update petitions.petition_signature set city_cleaned='Bran' where city_cleaned i
 'Bran-Brasov'
 );
 update petitions.petition_signature set city_cleaned='Brad' where city_cleaned in (
-'Brad',
 'Brad  Hunedoara',
 'Brad Hd',
 'Brad, Hd',
@@ -2232,7 +2225,6 @@ update petitions.petition_signature set city_cleaned='Borca' where city_cleaned 
 'Borca-Neamt'
 );
 update petitions.petition_signature set city_cleaned='Bologna' where city_cleaned in (
-'Bologna',
 'Bologna,argelato',
 'Bolognia',
 'Bologns',
@@ -2292,7 +2284,6 @@ update petitions.petition_signature set city_cleaned='Birmingham' where city_cle
 update petitions.petition_signature set city_cleaned='Bicazu Ardelean' where city_cleaned in (
 'Bicazu Adelean',
 'Bicazu Ardelan',
-'Bicazu Ardelean',
 'Bicazu Ardelean , Neamt',
 'Bicazu Ardelean Neamt',
 'Bicazu-Ardelean'

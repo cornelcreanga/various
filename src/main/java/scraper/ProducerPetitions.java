@@ -63,12 +63,11 @@ public class ProducerPetitions implements Runnable {
             consumer.submit(consume);
         }
         try {
+            consumer.shutdown();
             consumer.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        consumer.shutdown();
-        System.out.println("Done.");
 
     }
 }

@@ -35,14 +35,14 @@ public class ProducerDonations implements Runnable {
                 //https://salveazaoinima.ro/lista-donatori/?campaign=bianca-bodea
                 String campaignId = link.substring(link.indexOf("campaigns/")+"campaigns/".length(),link.length()-1);
                 CampaignDao dao = new CampaignDao();
-                Campaign campaign;
                 try(Connection c = DbConnection.get()){
 
                     try {
-                        campaign = dao.loadByName(c, text);
+                        dao.loadByName(c, text);
+                        //campaign already exists so continue
                         continue;
                     }catch(NotFoundException e){
-                        System.out.println("Will process camapign "+link);
+                        System.out.println("Will process campaign "+link);
                     }
                 } catch (SQLException e) {
                     System.out.println("Error occured during execution, message is "+e.getMessage());
@@ -63,12 +63,11 @@ public class ProducerDonations implements Runnable {
 
 
         try {
+            consumer.shutdown();
             consumer.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        consumer.shutdown();
-        System.out.println("Done.");
 
     }
 }

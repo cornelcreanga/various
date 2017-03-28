@@ -18,8 +18,9 @@ public class MainDonations {
 
 
         producer.submit(produce);
-        producer.awaitTermination(1, TimeUnit.DAYS);
         producer.shutdown();
+        producer.awaitTermination(1, TimeUnit.DAYS);
 
+        System.out.println("done.");
     }
 }

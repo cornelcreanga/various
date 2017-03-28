@@ -65,8 +65,13 @@ public class ConsumerPetitions implements Runnable {
                         String personName;
                         if (name.childNode(0).childNode(0) instanceof TextNode)
                             personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim()), DELIMITERS);
-                        else
-                            personName = WordUtils.capitalizeFully(removeAccents(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim()), DELIMITERS);
+                        else {
+                            try {
+                                personName = WordUtils.capitalizeFully(((TextNode) (name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
+                            }catch (Exception e){
+                                personName = WordUtils.capitalizeFully(((TextNode) (name.childNode(0).childNode(0).childNode(1))).getWholeText().trim(), DELIMITERS);
+                            }
+                        }
                         Node city = node.childNode(4);
                         String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
                         cityName = WordUtils.capitalizeFully(removeAccents(cityName), DELIMITERS);
@@ -114,7 +119,7 @@ public class ConsumerPetitions implements Runnable {
 
     public static void main(String[] args) throws Exception{
         //https://www.petitieonline.com/signatures/cetatenii_discriminati_de_presedintele_basescu_ii_cer_demisia/start/141000
-        String link = "https://www.petitieonline.com/signatures/cetatenii_discriminati_de_presedintele_basescu_ii_cer_demisia/start/10";
+        String link = "https://www.petitieonline.com/signatures/suntem_impotriva_oug_13_2017_de_modificare_a_cp/start/118470";
         try {
             System.out.println("Parsing "+link);
             Document doc = Jsoup.connect(link).get();
@@ -128,12 +133,18 @@ public class ConsumerPetitions implements Runnable {
                 }else{
 
                     Node name = node.childNode(2);
-                    System.out.println(name);
+                    //System.out.println(name);
                     String personName;
                     if (name.childNode(0).childNode(0) instanceof TextNode)
                         personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
-                    else
-                        personName = WordUtils.capitalizeFully(((TextNode)(name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
+                    else {
+                        try {
+                            personName = WordUtils.capitalizeFully(((TextNode) (name.childNode(0).childNode(0).childNode(0))).getWholeText().trim(), DELIMITERS);
+                        }catch (Exception e){
+                            personName = WordUtils.capitalizeFully(((TextNode) (name.childNode(0).childNode(0).childNode(1))).getWholeText().trim(), DELIMITERS);
+                        }
+                    }
+                    System.out.println("person:"+personName);
 //8 childs
                     Node city = node.childNode(4);
                     String cityName = ((TextNode)(city.childNode(1).childNode(2))).getWholeText().trim();
