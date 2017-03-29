@@ -8,7 +8,6 @@ import java.nio.CharBuffer;
 
 
 public class Smaz {
-    private static Logger log = LoggerFactory.getLogger(Smaz.class);
 
     /* Compression CODEBOOK, used for compression */
     private static final String CODEBOOK[] = {
@@ -197,7 +196,7 @@ public class Smaz {
             try {
                 baos.write(str.getBytes());
             } catch (IOException e) {
-                log.error("Error outputting verbatim data", e);
+                //log.error("Error outputting verbatim data", e);
             }
         }
     }
@@ -245,14 +244,12 @@ public class Smaz {
         //http://www.winedt.org/Dict/
         //
         Smaz smaz = new Smaz();
-        String text = "shoco is a C library to compress and decompress short strings";
-        byte[] compressed = smaz.compress(text);
-        System.out.println(text.length());
-        System.out.println(compressed.length);
 
 
-        text = "sa zicem ca ai de implementat un serviciu";
-        compressed = smaz.compress(text);
+
+        String text = "shoco is a C library to compress and decompress short strings. It is very fast and easy to use. The default compression model is optimized for english words, but you can generate your own compression model based on your specific input data.";
+        text = "howdy";
+        byte[]  compressed = smaz.compress(text);
         System.out.println(text.length());
         System.out.println(compressed.length);
     }
