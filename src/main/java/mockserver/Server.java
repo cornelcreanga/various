@@ -13,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.mockserver.client.proxy.ProxyClient;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
+import org.mockserver.model.HttpClassCallback;
 import org.mockserver.model.HttpRequest;
 
 
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
-import static org.mockserver.model.HttpCallback.callback;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
@@ -61,7 +61,7 @@ public class Server {
                         .withPath("/login")
                         .withBody("{username: 'foo', password: 'invalid'}")
         ).callback(
-                callback()
+                HttpClassCallback.callback()
                         .withCallbackClass("mockserver.ResponseCallback")
         );
 
