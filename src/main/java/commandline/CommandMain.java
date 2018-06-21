@@ -3,8 +3,7 @@ package commandline;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "topology",
-        subcommands = {
-                CommandInfo.class,CommandDelete.class})
+        subcommands = {CommandInfo.class,CommandDelete.class})
 public class CommandMain implements Runnable {
 
     @CommandLine.Option(names = {"-s", "--server"}, description = "Server")
