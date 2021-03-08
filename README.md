@@ -1,1 +1,1 @@
-Playground for cool things :)
+scrapper for https://www.petitieonline.com
